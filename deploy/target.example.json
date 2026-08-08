@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 3,
+  "environment": "production",
+  "hostname": "teamboundary.example.com",
+  "accessTeamDomain": "your-team.cloudflareaccess.com",
+  "accessAud": "replace-with-access-application-aud",
+  "aiRelease": { "enabled": false, "gatewayId": null, "reviewId": null },
+  "routeRelease": { "enabled": false, "reviewId": null },
+  "accountId": "00000000000000000000000000000000",
+  "d1DatabaseId": "00000000-0000-0000-0000-000000000000",
+  "rateLimitNamespaceIds": {
+    "account": "000003",
+    "request": "000000",
+    "mutation": "000001",
+    "ai": "000002"
+  }
+}

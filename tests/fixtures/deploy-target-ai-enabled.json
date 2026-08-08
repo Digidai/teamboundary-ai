@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 3,
+  "environment": "staging",
+  "hostname": "teamboundary-ai-test.example.com",
+  "accessTeamDomain": "teamboundary-test.cloudflareaccess.com",
+  "accessAud": "ai-test-audience-000001",
+  "aiRelease": {
+    "enabled": true,
+    "gatewayId": "teamboundary-ai-test",
+    "reviewId": "SECURITY-REVIEW-123"
+  },
+  "routeRelease": { "enabled": false, "reviewId": null },
+  "accountId": "11111111111111111111111111111111",
+  "d1DatabaseId": "33333333-3333-4333-8333-333333333333",
+  "rateLimitNamespaceIds": {
+    "account": "981230024",
+    "request": "981230021",
+    "mutation": "981230022",
+    "ai": "981230023"
+  }
+}

@@ -1,0 +1,31 @@
+name: Feature proposal
+description: Propose a change that preserves the documented security boundary.
+title: 'proposal: '
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the user problem without including customer or confidential data.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true
+  - type: textarea
+    id: boundaries
+    attributes:
+      label: Security, tenant and cost boundaries
+      description: Explain how the proposal preserves authorization, isolation and fail-closed spending limits.
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope confirmation
+      options:
+        - label: I understand that acceptance is not a delivery commitment.
+          required: true

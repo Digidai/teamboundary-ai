@@ -1,0 +1,14 @@
+* @Digidai
+
+/.github/ @Digidai
+/migrations/ @Digidai
+/scripts/ @Digidai
+/src/auth/ @Digidai
+/src/workflows/ @Digidai
+/SECURITY.md @Digidai
+/PROVENANCE.md @Digidai
+/LICENSE @Digidai
+/NOTICE @Digidai
+/package.json @Digidai
+/package-lock.json @Digidai
+/wrangler.jsonc @Digidai

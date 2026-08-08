@@ -1,0 +1,8 @@
+# Local development only. Never copy these two values into production.
+APP_ENV="development"
+AUTH_MODE="dev"
+AI_ENABLED="false"
+PROVISIONING_MODE="personal"
+ACCESS_TEAM_DOMAIN="your-team.cloudflareaccess.com"
+ACCESS_AUD="replace-with-access-application-aud"
+AI_GATEWAY_ID="replace-with-ai-gateway-id"

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 3,
+  "environment": "production",
+  "hostname": "teamboundary.example.com",
+  "accessTeamDomain": "teamboundary-test.cloudflareaccess.com",
+  "accessAud": "production-audience-0001",
+  "aiRelease": { "enabled": false, "gatewayId": null, "reviewId": null },
+  "routeRelease": { "enabled": false, "reviewId": null },
+  "accountId": "11111111111111111111111111111111",
+  "d1DatabaseId": "11111111-1111-4111-8111-111111111111",
+  "rateLimitNamespaceIds": {
+    "account": "981230004",
+    "request": "981230001",
+    "mutation": "981230002",
+    "ai": "981230003"
+  }
+}

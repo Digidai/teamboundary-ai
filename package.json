@@ -1,0 +1,79 @@
+{
+  "name": "teamboundary-ai",
+  "version": "0.1.0",
+  "description": "A security-first multi-tenant AI workspace built entirely on Cloudflare.",
+  "private": true,
+  "homepage": "https://github.com/Digidai/teamboundary-ai#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Digidai/teamboundary-ai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Digidai/teamboundary-ai/issues"
+  },
+  "keywords": [
+    "cloudflare",
+    "multi-tenant",
+    "ai-workspace",
+    "workers-ai",
+    "d1",
+    "workflows"
+  ],
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "ai:gate:disable": "node scripts/prepare-d1-gate-config.mjs && wrangler d1 execute CONTROL_DB --remote --command \"UPDATE deployment_limits SET ai_enabled=0 WHERE id=1\" --config dist/teamboundary_gate_control/wrangler.json",
+    "ai:gate:enable": "npm run prepare:deploy && wrangler d1 execute CONTROL_DB --remote --command \"UPDATE deployment_limits SET ai_enabled=1 WHERE id=1\" --config dist/teamboundary_target_control/wrangler.json",
+    "ai:gate:status": "node scripts/prepare-d1-gate-config.mjs && wrangler d1 execute CONTROL_DB --remote --command \"SELECT ai_enabled FROM deployment_limits WHERE id=1\" --config dist/teamboundary_gate_control/wrangler.json",
+    "build": "node scripts/clean-dist.mjs && vite build",
+    "boundary": "node scripts/check-boundaries.mjs",
+    "check": "npm run boundary && npm run license:check && npm run license:bundle:check && npm run migration:check && npm run typecheck && npm run test:run && npm run build && npm run dist:check && npm run deployment:check",
+    "deploy": "npm run deploy:control",
+    "deploy:control": "npm run prepare:deploy && wrangler deploy --autoconfig=false --strict --config dist/teamboundary_target_control/wrangler.json",
+    "deployment:check": "node scripts/check-deploy-config.mjs",
+    "dist:check": "node scripts/check-dist.mjs",
+    "dev": "vite dev",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "license:bundle": "node scripts/generate-third-party-licenses.mjs",
+    "license:bundle:check": "node scripts/generate-third-party-licenses.mjs --check",
+    "license:check": "node scripts/check-licenses.mjs",
+    "migration:check": "node --no-warnings scripts/check-migration.mjs",
+    "migration:remote:apply": "npm run prepare:deploy && wrangler d1 migrations apply CONTROL_DB --remote --config dist/teamboundary_target_control/wrangler.json",
+    "migration:remote:list": "npm run prepare:deploy && wrangler d1 migrations list CONTROL_DB --remote --config dist/teamboundary_target_control/wrangler.json",
+    "prepare:deploy": "npm run build && node scripts/prepare-deploy-config.mjs",
+    "sbom:check": "npm run sbom:generate --silent | node scripts/check-sbom.mjs",
+    "sbom:generate": "npm sbom --sbom-format cyclonedx | node scripts/normalize-sbom.mjs",
+    "test": "vitest --config vitest.config.ts",
+    "test:run": "vitest run --config vitest.config.ts && vitest run --config vitest.workers.config.ts",
+    "test:unit": "vitest run --config vitest.config.ts",
+    "test:workers": "vitest run --config vitest.workers.config.ts",
+    "typecheck": "tsc --noEmit",
+    "types:cloudflare": "wrangler types src/worker-configuration.d.ts",
+    "verify:deploy": "npm run prepare:deploy && wrangler deploy --dry-run --autoconfig=false --strict --config dist/teamboundary_target_control/wrangler.json"
+  },
+  "dependencies": {
+    "hono": "4.13.1",
+    "jose": "6.2.8",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "1.51.1",
+    "@cloudflare/vitest-pool-workers": "0.20.3",
+    "@cloudflare/workers-types": "5.20260804.1",
+    "@types/node": "26.1.2",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "@vitejs/plugin-react": "6.0.5",
+    "@vitest/coverage-v8": "4.1.10",
+    "prettier": "3.9.6",
+    "typescript": "7.0.2",
+    "vite": "8.2.1",
+    "vitest": "4.1.10",
+    "wrangler": "4.120.0"
+  }
+}

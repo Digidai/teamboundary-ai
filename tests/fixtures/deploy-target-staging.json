@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 3,
+  "environment": "staging",
+  "hostname": "teamboundary-staging.example.com",
+  "accessTeamDomain": "teamboundary-test.cloudflareaccess.com",
+  "accessAud": "staging-audience-000001",
+  "aiRelease": { "enabled": false, "gatewayId": null, "reviewId": null },
+  "routeRelease": { "enabled": false, "reviewId": null },
+  "accountId": "11111111111111111111111111111111",
+  "d1DatabaseId": "22222222-2222-4222-8222-222222222222",
+  "rateLimitNamespaceIds": {
+    "account": "981230014",
+    "request": "981230011",
+    "mutation": "981230012",
+    "ai": "981230013"
+  }
+}
