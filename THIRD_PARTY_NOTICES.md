@@ -1,6 +1,6 @@
 # Third-party software notices
 
-Reviewed: 2026-08-08. `package-lock.json` is the reproducible dependency inventory for the source
+Reviewed: 2026-10-02. `package-lock.json` is the reproducible dependency inventory for the source
 tree. `THIRD_PARTY_LICENSES.txt` contains the generated license text distributed with the browser
 and Worker artifacts. Automated metadata checks support, but do not replace, release-specific legal
 review.
@@ -9,7 +9,7 @@ review.
 
 | Component | Version | License | Purpose                          |
 | --------- | ------: | ------- | -------------------------------- |
-| Hono      |  4.13.1 | MIT     | Worker HTTP routing              |
+| Hono      | 4.13.12 | MIT     | Worker HTTP routing              |
 | jose      |   6.2.8 | MIT     | Access JWT and JWKS verification |
 | React     |  19.2.8 | MIT     | Browser UI                       |
 | React DOM |  19.2.8 | MIT     | Browser rendering                |
@@ -22,6 +22,11 @@ by version 0.1.
 Cloudflare Vite Plugin, Cloudflare Workers types, Cloudflare Vitest pool, Vite, Vitest, TypeScript,
 Prettier, React Vite plugin and their transitive packages are pinned in the lockfile. Most declare
 MIT, Apache-2.0, ISC, BSD, 0BSD or CC0 licenses.
+
+The Miniflare development graph is limited to reviewed security patches `sharp@0.35.5` and
+`undici@7.29.1` through explicit overrides. These packages retain Apache-2.0 and MIT declarations,
+respectively; the optional image binaries retain their separate licenses below. The Cloudflare
+Vitest pool and Wrangler versions remain unchanged.
 
 The development graph also contains review-required optional/build packages:
 
